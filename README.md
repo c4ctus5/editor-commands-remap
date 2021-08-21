@@ -24,6 +24,9 @@ The original idea was to replicate the behaviour of the [Tabout extension for VS
 While studying the Obsidian API, I discovered the editor commands and thought it would be a good idea to be able to assign hotkeys to them.
 Thus, to *kinda* replicate the Tabout behaviour, just set an hotkey to the 'goRight' command.
 
+# Manual installation
+You can manually install this plugin by downloading the latest release, and copy the file `manifest.json` and `main.js` under the folder `vaultFolder/.obsidian/plugins/editor-commands-remap`.
+
 # How to use ?
 Go to `Settings > Hotkeys` and search for `Editor Commands Remap` to map hotkeys.
 ![settings image](./img/settings.png)
