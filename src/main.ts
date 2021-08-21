@@ -1,112 +1,105 @@
-import { App, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import {Plugin, Editor, EditorCommandName } from 'obsidian';
 
-interface MyPluginSettings {
-	mySetting: string;
-}
-
-const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
-}
 
 export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
-
 	async onload() {
-		console.log('loading plugin');
-
-		await this.loadSettings();
-
-		this.addRibbonIcon('dice', 'Sample Plugin', () => {
-			new Notice('This is a notice!');
+		
+		this.addCommand({
+			id: 'go-left',
+			name: 'go left',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goLeft')
 		});
-
-		this.addStatusBarItem().setText('Status Bar Text');
 
 		this.addCommand({
-			id: 'open-sample-modal',
-			name: 'Open Sample Modal',
-			// callback: () => {
-			// 	console.log('Simple Callback');
-			// },
-			checkCallback: (checking: boolean) => {
-				let leaf = this.app.workspace.activeLeaf;
-				if (leaf) {
-					if (!checking) {
-						new SampleModal(this.app).open();
-					}
-					return true;
-				}
-				return false;
-			}
+			id: 'go-right',
+			name: 'go right',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goRight')
 		});
 
-		this.addSettingTab(new SampleSettingTab(this.app, this));
-
-		this.registerCodeMirror((cm: CodeMirror.Editor) => {
-			console.log('codemirror', cm);
+		this.addCommand({
+			id: 'go-up',
+			name: 'go up',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goUp')
 		});
 
-		this.registerDomEvent(document, 'click', (evt: MouseEvent) => {
-			console.log('click', evt);
+		this.addCommand({
+			id: 'go-down',
+			name: 'go down',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goDown')
 		});
 
-		this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
+		this.addCommand({
+			id: 'go-start',
+			name: 'go to start',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goStart')
+		});
+
+		this.addCommand({
+			id: 'go-end',
+			name: 'go to end',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goEnd')
+		});
+
+		this.addCommand({
+			id: 'indent-more',
+			name: 'indent more',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'indentMore')
+		});
+
+		this.addCommand({
+			id: 'indent-less',
+			name: 'indent less',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'indentLess')
+		});
+
+		this.addCommand({
+			id: 'new-line-indent',
+			name: 'new line and indent',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'newlineAndIndent')
+		});
+
+		this.addCommand({
+			id: 'swap-line-up',
+			name: 'swap line up',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'swapLineUp')
+		});
+
+		this.addCommand({
+			id: 'swap-line-down',
+			name: 'swap line down',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'swapLineDown')
+		});
+
+		this.addCommand({
+			id: 'delete-line',
+			name: 'delete line',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'deleteLine')
+		});
+
+		this.addCommand({
+			id: 'toggle-fold',
+			name: 'toggle fold',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'toggleFold')
+		});
+
+		this.addCommand({
+			id: 'fold-all',
+			name: 'fold all',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'foldAll')
+		});
+
+		this.addCommand({
+			id: 'unfold-all',
+			name: 'unfold all',
+			editorCallback: (editor, view) => this.execEditorCmd(editor, 'unfoldAll')
+		});
+		
+	}
+
+	execEditorCmd(editor: Editor, cmd: EditorCommandName) {
+		editor.exec(cmd)
 	}
 
 	onunload() {
-		console.log('unloading plugin');
-	}
-
-	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-	}
-
-	async saveSettings() {
-		await this.saveData(this.settings);
-	}
-}
-
-class SampleModal extends Modal {
-	constructor(app: App) {
-		super(app);
-	}
-
-	onOpen() {
-		let {contentEl} = this;
-		contentEl.setText('Woah!');
-	}
-
-	onClose() {
-		let {contentEl} = this;
-		contentEl.empty();
-	}
-}
-
-class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
-
-	constructor(app: App, plugin: MyPlugin) {
-		super(app, plugin);
-		this.plugin = plugin;
-	}
-
-	display(): void {
-		let {containerEl} = this;
-
-		containerEl.empty();
-
-		containerEl.createEl('h2', {text: 'Settings for my awesome plugin.'});
-
-		new Setting(containerEl)
-			.setName('Setting #1')
-			.setDesc('It\'s a secret')
-			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				.setValue('')
-				.onChange(async (value) => {
-					console.log('Secret: ' + value);
-					this.plugin.settings.mySetting = value;
-					await this.plugin.saveSettings();
-				}));
 	}
 }
