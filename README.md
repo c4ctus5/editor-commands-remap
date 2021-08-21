@@ -9,7 +9,7 @@ Available commands are :
 - `goStart` : move cursor to the start of the note
 - `goEnd` : move cursor at the end of the note
 - `indentMore` : indent current or selected lines
-- `indentLess` : unindent current of selected lines
+- `indentLess` : unindent current or selected lines
 - `newlineAndIndent` : create a new line and indent cursor
 - `swapLineUp` : swap the current line and the line above it
 - `swapLineDown` : swap the current line and the line below it
