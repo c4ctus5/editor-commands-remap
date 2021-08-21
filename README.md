@@ -28,4 +28,4 @@ Thus, to *kinda* replicate the Tabout behaviour, just set an hotkey to the 'goRi
 Go to `Settings > Hotkeys` and search for `Editor Commands Remap` to map hotkeys.
 ![settings image](./img/settings.png)
 
-This commands are only available when an editor is opened.
+These commands are only available when an editor is opened.
