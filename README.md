@@ -14,11 +14,12 @@ Available commands are :
 - `swapLineUp` : swap the current line and the line above it
 - `swapLineDown` : swap the current line and the line below it
 - `deleteLine` : delete the current line
-- `toggleFold` : fold or unfold at current position
+- `toggleFold` : fold or unfold item at current position
 - `foldAll` : fold everything
 - `unfoldAll` : unfold everyting
 
-Note : swap commands are already available in Obsidian, but for the sake of completness, I added them here.
+Note : these commands are only available when an editor is opened.
+Note : some commands are already available in Obsidian, but for the sake of completeness, I still added them here.
 
 The original idea was to replicate the behaviour of the [Tabout extension for VSCode](https://github.com/albertromkes/tabout) by [Albert Romkes](https://github.com/albertromkes), but mapping `Tab` as a hotkey is not possible in Obsidian. 
 While studying the Obsidian API, I discovered the editor commands and thought it would be a good idea to be able to assign hotkeys to them.
@@ -28,7 +29,10 @@ Thus, to *kinda* replicate the Tabout behaviour, just set an hotkey to the 'goRi
 You can manually install this plugin by downloading the latest release, and copy the file `manifest.json` and `main.js` under the folder `vaultFolder/.obsidian/plugins/editor-commands-remap`.
 
 # How to use ?
-Go to `Settings > Hotkeys` and search for `Editor Commands Remap` to map hotkeys.
+This plugin does not set default hotkeys.
+To set hotkeys, go to `Settings > Hotkeys` and search for `Editor Commands Remap`.
 ![settings image](./img/settings.png)
 
-These commands are only available when an editor is opened.
+## Hotkeys recommendations
+When moving the cursor, pressing `Shift` or `Ctrl+Shift` also select text. Thus, it is not recommended to use `Ctrl` or `Shift` as hotkey modifiers for moving the cursor.
+`Alt` is the recommended modifier.
