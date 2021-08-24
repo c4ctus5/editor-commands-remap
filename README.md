@@ -18,8 +18,9 @@ Available commands are :
 - `foldAll` : fold everything
 - `unfoldAll` : unfold everyting
 
-Note : these commands are only available when an editor is opened.
-Note : some commands are already available in Obsidian, but for the sake of completeness, I still added them here.
+**Note** : these commands are only available when an editor is opened.
+
+**Note** : some commands are already available in Obsidian, but for the sake of completeness, I still added them here.
 
 The original idea was to replicate the behaviour of the [Tabout extension for VSCode](https://github.com/albertromkes/tabout) by [Albert Romkes](https://github.com/albertromkes), but mapping `Tab` as a hotkey is not possible in Obsidian. 
 While studying the Obsidian API, I discovered the editor commands and thought it would be a good idea to be able to assign hotkeys to them.
