@@ -1,9 +1,10 @@
-import {Plugin, Editor, EditorCommandName } from 'obsidian';
+import { Plugin, Editor, EditorCommandName } from 'obsidian';
 
 
-export default class MyPlugin extends Plugin {
+export default class EditorCommandsRemapPlugin extends Plugin {
+
 	async onload() {
-		
+
 		this.addCommand({
 			id: 'go-left',
 			name: 'go left',
@@ -93,13 +94,9 @@ export default class MyPlugin extends Plugin {
 			name: 'unfold all',
 			editorCallback: (editor, view) => this.execEditorCmd(editor, 'unfoldAll')
 		});
-		
 	}
 
 	execEditorCmd(editor: Editor, cmd: EditorCommandName) {
 		editor.exec(cmd)
-	}
-
-	onunload() {
 	}
 }
