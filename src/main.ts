@@ -8,95 +8,91 @@ export default class EditorCommandsRemapPlugin extends Plugin {
 		this.addCommand({
 			id: 'go-left',
 			name: 'go left',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goLeft')
+			editorCallback: editor => editor.exec('goLeft')
 		});
 
 		this.addCommand({
 			id: 'go-right',
 			name: 'go right',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goRight')
+			editorCallback: editor => editor.exec('goRight')
 		});
 
 		this.addCommand({
 			id: 'go-up',
 			name: 'go up',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goUp')
+			editorCallback: editor => editor.exec('goUp')
 		});
 
 		this.addCommand({
 			id: 'go-down',
 			name: 'go down',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goDown')
+			editorCallback: editor => editor.exec('goDown')
 		});
 
 		this.addCommand({
 			id: 'go-start',
 			name: 'go to start',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goStart')
+			editorCallback: editor => editor.exec('goStart')
 		});
 
 		this.addCommand({
 			id: 'go-end',
 			name: 'go to end',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'goEnd')
+			editorCallback: editor => editor.exec('goEnd')
 		});
 
 		this.addCommand({
 			id: 'indent-more',
 			name: 'indent more',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'indentMore')
+			editorCallback: editor => editor.exec('indentMore')
 		});
 
 		this.addCommand({
 			id: 'indent-less',
 			name: 'indent less',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'indentLess')
+			editorCallback: editor => editor.exec('indentLess')
 		});
 
 		this.addCommand({
 			id: 'new-line-indent',
 			name: 'new line and indent',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'newlineAndIndent')
+			editorCallback: editor => editor.exec('newlineAndIndent')
 		});
 
 		this.addCommand({
 			id: 'swap-line-up',
 			name: 'swap line up',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'swapLineUp')
+			editorCallback: editor => editor.exec('swapLineUp')
 		});
 
 		this.addCommand({
 			id: 'swap-line-down',
 			name: 'swap line down',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'swapLineDown')
+			editorCallback: editor => editor.exec('swapLineDown')
 		});
 
 		this.addCommand({
 			id: 'delete-line',
 			name: 'delete line',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'deleteLine')
+			editorCallback: editor => editor.exec('deleteLine')
 		});
 
 		this.addCommand({
 			id: 'toggle-fold',
 			name: 'toggle fold',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'toggleFold')
+			editorCallback: editor => editor.exec('toggleFold')
 		});
 
 		this.addCommand({
 			id: 'fold-all',
 			name: 'fold all',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'foldAll')
+			editorCallback: editor => editor.exec('foldAll')
 		});
 
 		this.addCommand({
 			id: 'unfold-all',
 			name: 'unfold all',
-			editorCallback: (editor, view) => this.execEditorCmd(editor, 'unfoldAll')
+			editorCallback: editor => editor.exec('unfoldAll')
 		});
-	}
-
-	execEditorCmd(editor: Editor, cmd: EditorCommandName) {
-		editor.exec(cmd)
 	}
 }

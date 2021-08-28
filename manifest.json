@@ -1,7 +1,7 @@
 {
 	"id": "editor-commands-remap",
 	"name": "Editor Commands Remap",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minAppVersion": "0.9.7",
 	"description": "Map hotkeys to editor commands.",
 	"author": "cactus5",
